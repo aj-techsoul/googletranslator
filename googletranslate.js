@@ -55,10 +55,25 @@ font { all: unset !important; }
       const languages = {
         en: "English",
         ms: "Malay",
-        "zh-CN": "Chinese",
+        "zh-CN": "Chinese (Simplified)",
+        "zh-TW": "Chinese (Traditional)",
         ta: "Tamil",
-        hi: "Hindi"
+        hi: "Hindi",
+        es: "Spanish",
+        fr: "French",
+        de: "German",
+        ru: "Russian",
+        ar: "Arabic",
+        bn: "Bengali",
+        pt: "Portuguese",
+        ja: "Japanese",
+        ko: "Korean",
+        ur: "Urdu",
+        te: "Telugu",
+        ml: "Malayalam",
+        kn: "Kannada"
       };
+
 
       for (const [code, label] of Object.entries(languages)) {
         const option = document.createElement("option");
