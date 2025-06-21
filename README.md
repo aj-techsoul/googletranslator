@@ -1,7 +1,7 @@
 # googletranslator
 Translate your Website to any language
 
-#`HTML`
+#### ``HTML``
 ```
 <select title="Language" onchange="translateLanguage(this)" class="langinput notranslate">
     <option value="en">English</option>
@@ -26,6 +26,8 @@ Translate your Website to any language
   </select>
 ```
 
-#`JS`
+#### `JS`
+```
 <script src="googletranslator.js" defer=""></script>
+```
 
