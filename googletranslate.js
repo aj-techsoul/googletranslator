@@ -14,7 +14,7 @@
       script.defer = true;
       script.type = "text/javascript";
       script.id = "google-translate-script";
-      script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+      script.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
       document.head.appendChild(script);
 
       // Setup the init function globally
