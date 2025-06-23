@@ -88,26 +88,43 @@ font { all: unset !important; }
     setupTranslateFunction: function () {
       if (window.translateLanguage) return;
 
-      window.translateLanguage = function (sel) {
-        const lang = sel.value;
-        const frame = document.querySelector("iframe.goog-te-menu-frame");
+window.translateLanguage = function (sel) {
+  const langLabel = sel.options[sel.selectedIndex].text.toLowerCase();
+  sel.disabled = true; // Optional: disable dropdown while waiting
 
-        if (!frame) {
-          alert("Translator not loaded yet. Please wait.");
-          return;
-        }
-
-        const frameDoc = frame.contentDocument || frame.contentWindow.document;
-        const langLinks = frameDoc.querySelectorAll(".goog-te-menu2-item span.text");
-
-        for (const link of langLinks) {
-          if (link.innerText.toLowerCase() === sel.options[sel.selectedIndex].text.toLowerCase()) {
-            link.click();
-            break;
-          }
-        }
-      };
+  const tryTranslate = () => {
+    const frame = document.querySelector("iframe.goog-te-menu-frame");
+    if (!frame) {
+      console.log("Waiting for Google Translate frame...");
+      return false;
     }
+
+    const frameDoc = frame.contentDocument || frame.contentWindow.document;
+    const langItems = frameDoc.querySelectorAll(".goog-te-menu2-item span.text");
+
+    for (let item of langItems) {
+      if (item.innerText.toLowerCase() === langLabel) {
+        item.click();
+        sel.disabled = false;
+        return true;
+      }
+    }
+
+    return false;
+  };
+
+  // Retry every 300ms for up to 5 seconds
+  let attempts = 0;
+  const interval = setInterval(() => {
+    if (tryTranslate() || attempts++ > 15) {
+      clearInterval(interval);
+      if (attempts > 15) {
+        sel.disabled = false;
+        alert("Translator failed to load. Please try again later.");
+      }
+    }
+  }, 300);
+}
   };
 
   // Initialize when DOM is ready
