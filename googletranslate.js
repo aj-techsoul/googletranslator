@@ -125,7 +125,6 @@ window.translateLanguage = function (sel) {
     }
   }, 300);
 }
-  };
 
   // Initialize when DOM is ready
   if (document.readyState === "loading") {
