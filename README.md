@@ -28,6 +28,6 @@ Translate your Website to any language
 
 #### `JS`
 ```
-<script src="googletranslator.js" defer=""></script>
+<script src="https://cdn.jsdelivr.net/gh/aj-techsoul/googletranslator@main/googletranslate.js" defer=""></script>
 ```
 
